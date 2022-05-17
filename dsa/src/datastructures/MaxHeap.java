@@ -2,35 +2,43 @@ package datastructures;
 
 import datastructures.Heap.Heap;
 
-public class MaxHeap implements Heap {
+public class MaxHeap extends Heap {
+    public MaxHeap(int maxSize) {
+        this.heap = new int[maxSize + 1];
+        this.maxSize = maxSize;
+        this.size = 0;
+    }
+
     public MaxHeap() {
-        heap.add(-1);
+        this.heap = new int[maxSize + 1];
     }
 
     @Override
     public void push(int data) {
-
-        int i = heap.size() + 1;
-        while (i != 1 && data > heap.get(i / 2)) {
-            heap.set(i, heap.get(i / 2));
+        if (size == maxSize) {
+            System.err.println("The Heap is full");
+            return;
+        }
+        int i = ++size;
+        while (i != 1 && data > heap[i / 2]) {
+            heap[i] = heap[i / 2];
             i /= 2;
         }
-        heap.set(i, data);
+        heap[i] = data;
     }
 
     @Override
-    public void pop() {
-        if (heap.size() == 0) {
-            System.err.println("Heap is empty");
-            return;
-        }
-        int item = heap.get(1);
-        int temp = heap.get(heap.size() - 1);
-        int parent = 1;
-        int child = 2;
-        while (child <= heap.size()) {
-        }
+    public int pop() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
+    @Override
+    public void print() {
+        for (int i = 1; i <= size; i++) {
+            System.out.print(heap[i] + " ");
+        }
+        System.out.println();
     }
 
 }

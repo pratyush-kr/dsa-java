@@ -1,4 +1,5 @@
-import datastructures.Tree;
+import datastructures.MaxHeap;
+import datastructures.Heap.Heap;;
 
 /*
 book example
@@ -20,12 +21,13 @@ book example
 
 public class App {
     public static void main(String[] args) {
-        Tree tree = new Tree();
-        tree.levelOrderInsertion();
-        tree.printLevelOrder();
-        System.out.println();
-        tree.swapTree(tree.root);
-        tree.printLevelOrder();
-        System.out.println();
+        Heap heap = new MaxHeap(5);
+        heap.push(1);
+        heap.push(2);
+        heap.push(5);
+        heap.push(4);
+        heap.push(9);
+        heap.push(13);
+        heap.print();
     }
 }

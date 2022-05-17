@@ -1,11 +1,13 @@
 package datastructures.Heap;
 
-import java.util.ArrayList;
-
-public interface Heap {
-    public ArrayList<Integer> heap = new ArrayList<>();
+public abstract class Heap {
+    protected int[] heap = null;
+    protected int size = 0;
+    protected int maxSize = 100;
 
     public abstract void push(int data);
 
-    public abstract void pop();
+    public abstract int pop();
+
+    public abstract void print();
 }
