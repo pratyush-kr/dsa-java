@@ -29,8 +29,27 @@ public class MaxHeap extends Heap {
 
     @Override
     public int pop() {
-        // TODO Auto-generated method stub
-        return 0;
+        int parent, child;
+        int item, temp;
+        if (size == 0) {
+            return heap[0];
+        }
+        item = heap[1];
+        temp = heap[size--];
+        parent = 1;
+        child = 2;
+        while (child <= size) {
+            if (child < size && heap[child] < heap[child + 1]) {
+                child++;
+            }
+            if (temp >= heap[child])
+                break;
+            heap[parent] = heap[child];
+            parent = child;
+            child *= 2;
+        }
+        heap[parent] = temp;
+        return item;
     }
 
     @Override
