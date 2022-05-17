@@ -1,4 +1,4 @@
-package datastructures.Heap;
+package datastructures.heap;
 
 public abstract class Heap {
     protected int[] heap = null;

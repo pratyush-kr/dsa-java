@@ -1,6 +1,6 @@
 package datastructures;
 
-import datastructures.Heap.Heap;
+import datastructures.heap.Heap;
 
 public class MaxHeap extends Heap {
     public MaxHeap(int maxSize) {

@@ -1,6 +1,6 @@
 package datastructures;
 
-import datastructures.Heap.Heap;
+import datastructures.heap.Heap;
 
 public class MinHeap extends Heap {
     public MinHeap(int maxSize) {
