@@ -35,6 +35,9 @@ public class App {
         System.out.print("dfs: ");
         graph.dfs(start, new boolean[vertices + 1]);
         System.out.println();
+        System.out.print("bfs: ");
+        graph.bfs(start, new boolean[vertices + 1]);
+        System.out.println();
         sc.close();
     }
 }

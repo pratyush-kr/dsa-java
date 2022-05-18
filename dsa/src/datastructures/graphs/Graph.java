@@ -1,5 +1,7 @@
 package datastructures.graphs;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class Graph {
@@ -63,11 +65,28 @@ public class Graph {
     }
 
     public void dfs(int start, boolean[] visited) {
+
         System.out.print(start + " ");
         visited[start] = true;
         for (int i = 1; i <= vertices; i++) {
             if (adjMat[start][i] >= 1 && visited[i] == false) {
                 dfs(i, visited);
+            }
+        }
+    }
+
+    public void bfs(int start, boolean[] visited) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(start);
+        visited[start] = true;
+        while (queue.isEmpty() == false) {
+            int front = queue.remove();
+            System.out.print(front + " ");
+            for (int i = 1; i <= vertices; i++) {
+                if (adjMat[front][i] >= 1 && visited[i] == false) {
+                    visited[i] = true;
+                    queue.add(i);
+                }
             }
         }
     }
