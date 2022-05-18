@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 import datastructures.graphs.Graph;
 
 /*
@@ -22,22 +20,6 @@ book example
 
 public class App {
     public static void main(String[] args) {
-        System.out.print("vertices: ");
-        Scanner sc = new Scanner(System.in);
-        int vertices = sc.nextInt();
-        System.out.print("isDirected: ");
-        boolean isDirected = (sc.nextInt() == 1) ? true : false;
-        Graph graph = new Graph(vertices, isDirected);
-        graph.createMatrix();
-        System.out.println("Graph:");
-        graph.printAdjMatrix();
-        int start = 2;
-        System.out.print("dfs: ");
-        graph.dfs(start, new boolean[vertices + 1]);
-        System.out.println();
-        System.out.print("bfs: ");
-        graph.bfs(start, new boolean[vertices + 1]);
-        System.out.println();
-        sc.close();
+        Graph.driver();
     }
 }
