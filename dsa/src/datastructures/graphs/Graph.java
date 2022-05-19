@@ -21,24 +21,33 @@ public class Graph {
         this.isDirected = isDirected;
     }
 
-    public void createMatrix() {
+    public void createMatrix(int edges) {
         Scanner sc = new Scanner(System.in);
         if (isDirected) {
-            for (int i = 1; i < vertices + 1; i++) {
-                for (int j = 1; j < vertices + 1; j++) {
-                    this.adjMat[i][j] = sc.nextInt();
-                }
+            edges = 2 * edges;
+            while (edges-- != 0) {
+                System.out.print("i: ");
+                int i = sc.nextInt();
+                System.out.print("j: ");
+                int j = sc.nextInt();
+                System.out.print(String.format("weight(edge[%d, %d]): ", i, j));
+                this.adjMat[i][j] = sc.nextInt();
             }
             for (int i = 0; i < vertices; i++) {
                 this.adjMat[i][i] = 0;
             }
         } else {
-            for (int i = 1; i <= vertices - 1; i++) {
-                for (int j = 1 + i; j <= vertices; j++) {
-                    System.out.print(String.format("weight(edge[%d, %d]): ", i, j));
-                    this.adjMat[i][j] = sc.nextInt();
-                    this.adjMat[j][i] = this.adjMat[i][j];
-                }
+            while (edges-- != 0) {
+                System.out.print("i: ");
+                int i = sc.nextInt();
+                System.out.print("j: ");
+                int j = sc.nextInt();
+                System.out.print(String.format("weight(edge[%d, %d]): ", i, j));
+                this.adjMat[i][j] = sc.nextInt();
+                this.adjMat[j][i] = this.adjMat[i][j];
+            }
+            for (int i = 0; i < vertices; i++) {
+                this.adjMat[i][i] = 0;
             }
         }
         sc.close();
@@ -95,10 +104,12 @@ public class Graph {
         System.out.print("vertices: ");
         Scanner sc = new Scanner(System.in);
         int vertices = sc.nextInt();
+        System.out.print("edges: ");
+        int edges = sc.nextInt();
         System.out.print("isDirected: ");
         boolean isDirected = (sc.nextInt() == 1) ? true : false;
         Graph graph = new Graph(vertices, isDirected);
-        graph.createMatrix();
+        graph.createMatrix(edges);
         System.out.println("Graph:");
         graph.printAdjMatrix();
         int start = 2;
@@ -108,6 +119,23 @@ public class Graph {
         System.out.print("bfs: ");
         graph.bfs(start, new boolean[vertices + 1]);
         System.out.println();
+        graph.connected();
         sc.close();
+    }
+
+    public void connected() {
+        boolean visited[] = new boolean[vertices + 1];
+        boolean isDisconnected = false;
+        dfs(1, visited);
+        for (int i = 1; i <= vertices; i++) {
+            if (visited[i] == false) {
+                System.out.println("Disconnected");
+                isDisconnected = true;
+                break;
+            }
+        }
+        if (isDisconnected == false) {
+            System.out.println("Connected");
+        }
     }
 }
