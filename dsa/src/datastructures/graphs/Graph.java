@@ -1,24 +1,35 @@
 package datastructures.graphs;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Graph {
     protected int vertices;
     protected boolean isDirected;
     protected int[][] adjMat;
+    protected int[] parent;
+
+    private class Edge {
+        int src;
+        int dst;
+        int weight;
+    };
 
     public Graph(int vertices, boolean isDirected) {
         this.vertices = vertices;
         adjMat = new int[vertices + 1][vertices + 1];
         this.isDirected = isDirected;
+        parent = new int[vertices];
     }
 
     public Graph(int vertices, boolean isDirected, int[][] adjMat) {
         this.vertices = vertices;
         this.adjMat = adjMat;
         this.isDirected = isDirected;
+        parent = new int[vertices];
     }
 
     public void createMatrix(int edges) {
@@ -136,6 +147,15 @@ public class Graph {
         }
         if (isDisconnected == false) {
             System.out.println("Connected");
+        }
+    }
+
+    public void kruskal() {
+        Edge edges[] = new Edge[vertices + 1];
+        for (int i = 0; i < vertices; i++) {
+            for (int j = 0; j < vertices; j++) {
+                // edges[]
+            }
         }
     }
 }
