@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.array;
 
 public class PrefixSum {
     public static Integer[] prefixSum(Integer[] array) {

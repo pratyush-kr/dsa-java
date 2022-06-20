@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.array;
 
 public class Maze {
     private int[][] array;

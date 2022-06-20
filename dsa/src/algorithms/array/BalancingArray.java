@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.array;
 
 public class BalancingArray {
     private Integer[] array;

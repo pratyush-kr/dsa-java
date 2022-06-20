@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.array;
 
 public class RangeSum {
     private int[] prefixArray;

@@ -19,7 +19,7 @@ book example
 public class App {
     public static void main(String[] args) {
         Integer[] array = { 2, 5, 3, 4, 6, 7, 3, 6, 5, 9, 1, 9 };
-        algorithms.BalancingArray rs = new algorithms.BalancingArray(array);
+        algorithms.array.BalancingArray rs = new algorithms.array.BalancingArray(array);
         System.out.println(rs.getBalancePoint());
     }
 }
