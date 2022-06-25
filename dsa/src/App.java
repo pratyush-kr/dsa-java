@@ -1,4 +1,4 @@
-import algorithms.array.LeftRotate;;
+import algorithms.array.Reverse;
 /*
 book example
     int[][] array = {
@@ -20,12 +20,12 @@ book example
 public class App {
     public static void main(String[] args) {
         int[] array = { 2, 5, 3, 4, 6, 7, 3, 6, 5, 9, 1, 9 };
-        LeftRotate lr = new LeftRotate(array, 5);
+        Reverse lr = new Reverse(array);
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
         System.out.println();
-        array = lr.rotateLeft();
+        array = lr.reverse();
         for (int i = 0; i < array.length; i++) {
             System.out.print(array[i] + " ");
         }
