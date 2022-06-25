@@ -1,15 +1,20 @@
 package algorithms.array;
 
-public class Array {
+public class Array extends QuickSort {
     private int[] array;
     private int d;
     private int n;
     private int[] prefixArray;
+    public int res;
 
     public Array(int[] array) {
         this.array = array;
         this.n = array.length;
         this.prefixArray = new int[n];
+        for (int i = 1; i < n; i++) {
+            prefixArray[i] += prefixArray[i - 1] + array[i];
+        }
+        res = 1;
     }
 
     public Array(int[] array, int d) {
@@ -38,6 +43,7 @@ public class Array {
         int tmp = array[left];
         array[left] = array[right];
         array[right] = tmp;
+        res = 1;
     }
 
     public int[] reverse() {
@@ -88,15 +94,6 @@ public class Array {
         return array;
     }
 
-    public void RangeSum(Integer[] array) {
-        int n = array.length;
-        prefixArray = new int[n];
-        prefixArray[0] = array[0];
-        for (int i = 1; i < n; i++) {
-            prefixArray[i] += prefixArray[i - 1] + array[i];
-        }
-    }
-
     public Integer rangeSum(int left, int right) {
         Integer ans = 0;
         if (left == 0) {
@@ -105,5 +102,64 @@ public class Array {
             ans = prefixArray[right] - prefixArray[left - 1];
         }
         return ans;
+    }
+
+    private boolean isAsc() {
+        for (int i = 0; i < n - 1; i++) {
+            if (array[i] > array[i + 1])
+                return false;
+        }
+        return true;
+    }
+
+    private boolean isDesc() {
+        for (int i = 0; i < n - 1; i++) {
+            if (array[i] < array[i + 1])
+                return false;
+        }
+        return true;
+    }
+
+    public boolean isSorted() {
+        return isAsc() || isDesc();
+    }
+
+    public int[] removeDuplicatesFromSortedArray() {
+        if (isSorted() == false)
+            return array;
+        res = 1;
+        for (int i = 1; i < n - 1; i++) {
+            if (array[i] != array[res - 1]) {
+                array[res++] = array[i];
+            }
+        }
+        return array;
+    }
+
+    public int[] moveZerosToEnd() {
+        int count = 0;
+        for (int i = 0; i < n; i++) {
+            if (array[i] != 0) {
+                swap(i, count);
+                count++;
+            }
+        }
+        return array;
+    }
+
+    public int getSecondLargestElement() {
+        int idx = -1;
+        int largest = 0;
+        for (int i = 1; i < n; i++) {
+            if (array[i] > array[largest]) {
+                idx = largest;
+                largest = i;
+            } else if (array[i] < array[largest]) {
+                if (idx == -1 || array[i] > array[idx]) {
+                    idx = i;
+                }
+            }
+        }
+        return array[idx];
     }
 }
