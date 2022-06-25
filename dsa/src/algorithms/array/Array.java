@@ -1,10 +1,10 @@
 package algorithms.array;
 
-public class Array extends QuickSort {
-    private int[] array;
-    private int d;
-    private int n;
-    private int[] prefixArray;
+public class Array {
+    protected int[] array;
+    protected int d;
+    protected int n;
+    protected int[] prefixArray;
     public int res;
 
     public Array(int[] array) {
@@ -15,6 +15,10 @@ public class Array extends QuickSort {
             prefixArray[i] += prefixArray[i - 1] + array[i];
         }
         res = 1;
+    }
+
+    public Array() {
+
     }
 
     public Array(int[] array, int d) {
@@ -39,7 +43,7 @@ public class Array extends QuickSort {
         return -1;
     }
 
-    private void swap(int left, int right) {
+    protected void swap(int left, int right) {
         int tmp = array[left];
         array[left] = array[right];
         array[right] = tmp;
@@ -57,7 +61,7 @@ public class Array extends QuickSort {
         return this.array;
     }
 
-    private void reverse(int left, int right) {
+    protected void reverse(int left, int right) {
         while (left < right) {
             swap(left, right);
             left++;
@@ -104,7 +108,7 @@ public class Array extends QuickSort {
         return ans;
     }
 
-    private boolean isAsc() {
+    protected boolean isAsc() {
         for (int i = 0; i < n - 1; i++) {
             if (array[i] > array[i + 1])
                 return false;
@@ -112,7 +116,7 @@ public class Array extends QuickSort {
         return true;
     }
 
-    private boolean isDesc() {
+    protected boolean isDesc() {
         for (int i = 0; i < n - 1; i++) {
             if (array[i] < array[i + 1])
                 return false;

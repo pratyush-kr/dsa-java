@@ -1,4 +1,5 @@
-import algorithms.array.Array;
+import algorithms.Recursion;
+
 /*
 book example
     int[][] array = {
@@ -19,16 +20,7 @@ book example
 
 public class App {
     public static void main(String[] args) {
-        int[] array = { 1, 1, 0, 2, 3, 3, 0, 0, 0, 6, 6, 7, 0, 9, 9, 9, 9 };
-        Array arr = new Array(array);
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
-        System.out.println();
-        array = arr.moveZerosToEnd();
-        for (int i = 0; i < array.length; i++) {
-            System.out.print(array[i] + " ");
-        }
-        System.out.println();
+        Recursion rs = new Recursion();
+        System.out.println(rs.isPalindrome("malayalamx", 0, 9));
     }
 }
