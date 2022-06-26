@@ -21,6 +21,6 @@ book example
 public class App {
     public static void main(String[] args) {
         Recursion rs = new Recursion();
-        System.out.println(rs.powerSet("abc", 0, ""));
+        rs.towerOfHanoi(3, 'A', 'B', 'C');
     }
 }
