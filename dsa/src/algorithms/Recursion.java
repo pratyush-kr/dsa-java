@@ -53,11 +53,46 @@ public class Recursion extends Array {
         int n = str.length();
         if (index == n) {
             // System.out.println(curr);
-            subStrings.add("'"+curr+"'");
+            subStrings.add("'" + curr + "'");
             return subStrings;
         }
         powerSet(str, index + 1, curr + str.charAt(index));
         powerSet(str, index + 1, curr);
         return subStrings;
+    }
+
+    public int josephus(int n, int k) {
+        if (n == 1) {
+            return 1;
+        } else {
+            return (josephus(n - 1, k) + k - 1) % n + 1;
+        }
+    }
+
+    public int ropeCuttingProblem(int n, int a, int b, int c) {
+        if (n == 0) {
+            return 0;
+        } else if (n < 0) {
+            return -1;
+        } else {
+            int res = Math.max(Math.max(ropeCuttingProblem(n - a, a, b, c), ropeCuttingProblem(n - b, a, b, c)),
+                    ropeCuttingProblem(n - c, a, b, c));
+            if (res == -1) {
+                return -1;
+            } else {
+                return res + 1;
+            }
+        }
+    }
+
+    public void towerOfHanoi(int n, char src, char aux, char dest) {
+        if (n == 1) {
+            System.out.println("move disc " + n + " from " + src + " to " + dest);
+            return;
+        } else {
+            towerOfHanoi(n - 1, src, dest, aux);
+            System.out.println("move disc " + n + " from " + src + " to " + dest);
+            towerOfHanoi(n - 1, aux, src, dest);
+        }
     }
 }
