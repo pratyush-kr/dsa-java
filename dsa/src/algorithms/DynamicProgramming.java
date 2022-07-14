@@ -62,22 +62,19 @@ public class DynamicProgramming {
         return curr;
     }
 
-    private int fun(int n, int k, int minEnergy, ArrayList<Integer> height) {
-        if (n == 0) {
-            return 0;
-        }
-        for (int i = 1; i <= k; i++) {
-            if (n - i > 0) {
-                int jump = this.frogJumpK(n - i, k, height) + abs(height.get(n) - height.get(n - i));
-                minEnergy = min(jump, minEnergy);
-            } else {
-                break;
+    public int frogJumpK(int n, int k, ArrayList<Integer> height) {
+        int[] dp = new int[n + 1];
+        int jumpEnergy = 0;
+        for (int i = 1; i < n; i++) {
+            int minSteps = Integer.MAX_VALUE;
+            for (int j = 1; j < k; j++) {
+                if (i - j > 0) {
+                    jumpEnergy = dp[i - j] + abs(height.get(i) - height.get(i - j));
+                    minSteps = min(jumpEnergy, minSteps);
+                }
+                dp[i] = minSteps;
             }
         }
-        return minEnergy;
-    }
-
-    public int frogJumpK(int n, int k, ArrayList<Integer> height) {
-        return fun(n - 1, k, Integer.MAX_VALUE, height);
+        return dp[n - 1];
     }
 }
